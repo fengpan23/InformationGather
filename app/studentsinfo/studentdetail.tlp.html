@@ -1,0 +1,122 @@
+<div class="student-detail">
+	<h1>{{header}}</h1>	
+	<form class="form-horizontal w5c-form" name="validateForm" role="form" w5c-form-validate="vm.validateOptions" novalidate >
+		<div class="form-group row">
+			<label class="col-sm-4 control-label text-right">学校名称:</label>
+			<div class="col-sm-4">
+				<input type="text" name="stu_school" class="form-control" ng-model="stu.stu_school" required/>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-4 control-label text-right">年级:</label>
+			<div class="col-sm-4">
+				<select class="form-control" name="stu_grade" ng-model="stu.stu_grade" ng-options="grade for grade in grades">
+		  		</select>
+		  	</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-4 control-label text-right">班级:</label>
+			<div class="col-sm-4">
+				<select class="form-control" ng-model="stu.stu_class"> 
+				    <option selected="true">一班</option>
+				    <option>二班</option>
+				    <option>三班</option>
+				</select>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-4 control-label text-right">学籍号:</label>
+			<div class="col-sm-4">
+				<input class="form-control" name="stu_number" ng-model="stu.stu_number"/>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-4 control-label text-right">姓名:</label>
+			<div class="col-sm-4">
+				<input class="form-control" name="stu_name" type="text" ng-model="stu.stu_name" required/>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-4 control-label text-right">身份证号码:</label>
+			<div class="col-sm-4">
+				<input class="form-control" name="stu_idCard" type="text" ng-model="stu.stu_idCard" ng-maxlength=18 ng-pattern="/\d{17}(\d|x|X)/"/>
+				<span class="idcard-message"></span>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-4 control-label text-right">性别:</label>
+			<div class="col-sm-4">
+				<input class="form-control" ng-model="stu.stu_gender">
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-4 control-label text-right">出生年月:</label>
+			<div class="col-sm-4">
+				<input class="form-control" name="stu_birthday" type="date" ng-model="stu.stu_birthday">
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-4 control-label text-right">第一监护人姓名:</label>
+			<div class="col-sm-4">
+				<input class="form-control" name="stu_guardian1_name" ng-model="stu.stu_guardian1_name">
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-4 control-label text-right">性别:</label>
+			<div class="col-sm-4">
+				<select class="form-control" name="stu_guardian1_gender" ng-model="stu.stu_guardian1_gender" ng-options="gender for gender in genders">
+				  </select>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-4 control-label text-right">号码:</label>
+			<div class="col-sm-4">
+				<input class="form-control" name="stu_guardian1_tel" type="number" maxlength="11" ng-model="stu.stu_guardian1_tel">
+				<span class="first-guardian-number"></span> 
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-4 control-label text-right">第二监护人姓名:</label>
+			<div class="col-sm-4">
+				<input class="form-control" name="stu_guardian2_name" ng-model="stu.stu_guardian2_name">
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-4 control-label text-right">性别:</label>
+			<div class="col-sm-4">
+				<select class="form-control" name="stu_guardian2_gender" ng-model="stu.stu_guardian2_gender">
+				    <option selected>女</option>
+				    <option>男</option>
+				 </select>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-4 control-label text-right">号码:</label>
+			<div class="col-sm-4">
+				<input class="form-control" name="stu_guardian2_tel" type="number" maxlength=11 ng-model="stu.stu_guardian2_tel">
+				<span class="secol-sm-4d-guardian-number"></span>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-4">
+				<button class="btn btn-lg btn-success" w5c-form-submit="formSubmit()">{{motion}}</button>
+			</div>
+		</div>
+	</form>
+
+	<div ng-show="{{motion === 'submit'}}">
+		<div class="jumbotron"  ng-controller="importController">
+        	<h2>批量导入</h2>
+        	<p class="lead">请确保上传的文件表格格式和所要求的表格格式一样，否则会导致数据混乱。</p>
+        	<a class="btn btn-info" ng-click="exportTemplate('/template/template.xlsx')" href="#" download="template">模板下载</a>
+        	<div class="row">
+        		<div  class="col-xs-6 col-sm-4 col-md-offset-2">
+	        		<input type="file" ng-file-select="onFileSelect($files)"  multiple accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
+        		</div>
+	        	<div class="col-xs-6 col-sm-4">
+					<button ng-click="importFile()" class="btn btn-primary">导入</button>
+	        	</div>
+			</div>
+      	</div>
+	</div>
+</div>

@@ -1,0 +1,24 @@
+<div ng-controller="schoolController" class="col-md-offset-3">
+	<ul class="school-list nav nav-sidebar">
+		<li class="school-item row" ng-controller="gradeController" ng-repeat="school in schools">
+			<a href="/school/{{school._id}}" class="school-name" ng-click="getGrade()">{{school.school_name}}</a>
+			<ul class="grade-list nav nav-sidebar {{list}}">
+				<li class="grade-item row col-md-offset-2" ng-controller="classController" ng-repeat="grade in grades">
+					<a href="/grade/{{grade._id}}" class="grade-name" ng-click="getClass()">{{grade.grade_name}}</a>
+					<ul class="class-list nav nav-sidebar {{clist}}">
+						<li class="class-item row col-md-offset-2" ng-repeat="_class in classs">
+							<a href="/class/{{_class._id}}">{{_class.class_name}}</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<div class="add-school">
+			<button type="button" class="btn btn-default btn-xs" ng-click="hideAddSchool='show'" title="添加学校">+</button>
+			<div class="add-span {{hideAddSchool || 'hide'}}">
+				<input ng-blur="addSchool()" ng-model="_schoolName"/>
+				<span class="close-btn" ng-click="hideAddSchool='hide'">X</span>
+			</div>
+		</div>
+	</ul>
+</div>

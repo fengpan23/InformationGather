@@ -1,0 +1,19 @@
+<div class="modal-header">
+    <h3 class="modal-title">机器码录入</h3>
+</div>
+<div class="modal-body">
+	<div>
+    	<span>姓名:</span>{{student.stu_name}}
+    	<span>学号:</span>{{student.stu_number}}
+	</div>
+
+    <div>
+        <span>机器码:</span>
+        <input ng-model="student.stu_machine_number" placeholder="扫 描 机 器 码" ng-keydown="studentLoad($event)"/>
+    </div>
+</div>
+<div class="modal-footer">
+	<button class="btn btn-primary" ng-click="ok(-1)">previous</button>
+    <button class="btn btn-primary" ng-click="ok(1)">next</button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>

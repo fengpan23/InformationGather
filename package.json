@@ -1,0 +1,21 @@
+{
+  "name": "lg-information-entry",
+  "version": "0.1.0",
+  "description": "lg information entry",
+  "directories": {
+    "test": "test"
+  },
+  "author": "pfeng",
+  "license": "BSD",
+  "readmeFilename": "README.md",
+  "dependencies": {
+    "express": "^3.10.5",
+    "mongoose": "3.6.13",
+    "underscore": "^1.6.0",
+    "walk": "latest",
+    "node-xlsx": "latest"
+  },
+  "engines": {
+    "node": "=0.10.28"
+  }
+}
